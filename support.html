@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ParTrack — Support</title>
+<style>
+  :root {
+    color-scheme: light dark;
+    --bg: #ffffff;
+    --fg: #1a1a1a;
+    --muted: #666;
+    --accent: #7acc00;
+    --card-bg: #f5f5f7;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #000;
+      --fg: #fff;
+      --muted: #999;
+      --accent: #aaff00;
+      --card-bg: #1c1c1e;
+    }
+  }
+  body {
+    background: var(--bg);
+    color: var(--fg);
+    font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, Arial, sans-serif;
+    line-height: 1.55;
+    max-width: 680px;
+    margin: 0 auto;
+    padding: 40px 20px 80px;
+    font-size: 16px;
+  }
+  h1 {
+    font-size: 28px;
+    font-weight: 800;
+    margin: 0 0 4px;
+  }
+  h2 {
+    font-size: 20px;
+    font-weight: 700;
+    margin: 32px 0 8px;
+  }
+  h3 {
+    font-size: 16px;
+    font-weight: 700;
+    margin: 16px 0 4px;
+  }
+  p { margin: 8px 0; }
+  .lede {
+    color: var(--muted);
+    font-size: 15px;
+    margin-bottom: 24px;
+  }
+  .faq {
+    background: var(--card-bg);
+    border-radius: 12px;
+    padding: 16px 18px;
+    margin: 10px 0;
+  }
+  .faq h3 {
+    margin-top: 0;
+    color: var(--fg);
+  }
+  .faq p {
+    color: var(--muted);
+    margin: 6px 0 0;
+  }
+  .contact {
+    background: var(--card-bg);
+    border-radius: 12px;
+    padding: 20px;
+    margin-top: 32px;
+    text-align: center;
+  }
+  .contact a {
+    color: var(--accent);
+    font-weight: 700;
+    text-decoration: none;
+  }
+  a { color: var(--accent); }
+  footer {
+    margin-top: 48px;
+    padding-top: 16px;
+    border-top: 1px solid var(--muted);
+    color: var(--muted);
+    font-size: 13px;
+    text-align: center;
+  }
+</style>
+</head>
+<body>
+<h1>ParTrack Support</h1>
+<p class="lede">Answers to common questions, plus how to get in touch when you need a human.</p>
+
+<h2>Frequently Asked Questions</h2>
+
+<div class="faq">
+  <h3>How do I scan a scorecard?</h3>
+  <p>On the iPhone, tap <strong>New Round</strong> → <strong>Scan Scorecard</strong>. The camera opens automatically. Hold the card flat in good light and let auto-shutter capture it. ParTrack pulls out the pars and per-tee yardages on its own. Review the result, fix anything that's off, and save it to your library.</p>
+</div>
+
+<div class="faq">
+  <h3>How does sync work between iPhone and Apple Watch?</h3>
+  <p>ParTrack uses Apple's WatchConnectivity framework to mirror courses, favorites, round history, and your active round between your iPhone and paired Apple Watch automatically. Start a round on one device, finish it on the other — strokes update live on both.</p>
+</div>
+
+<div class="faq">
+  <h3>Why doesn't my handicap show up?</h3>
+  <p>ParTrack calculates your World Handicap System (WHS) index from 18-hole rounds played on courses that have a tee with a course rating and slope. You need at least 3 complete 18-hole rounds with rated tees before an index is shown. Nine-hole rounds are saved to history but don't enter the handicap calculation.</p>
+</div>
+
+<div class="faq">
+  <h3>Can I play a 9-hole round?</h3>
+  <p>Yes — on the iPhone, choose <strong>Front 9</strong> or <strong>Back 9</strong> at round setup. The watch defaults to 18-hole rounds; if you want to play 9 on the watch, start the round from the phone first. Nine-hole rounds save to history but don't count toward your handicap index.</p>
+</div>
+
+<div class="faq">
+  <h3>Where is my data stored?</h3>
+  <p>All your courses, rounds, and history live on your device. There are no servers and no accounts. If you have a paired Apple Watch, the same data is mirrored there via Apple's sync framework. Uninstalling the app removes all local data.</p>
+</div>
+
+<div class="faq">
+  <h3>How do I delete a saved course or round?</h3>
+  <p>On the iPhone, swipe left on any row in <strong>My Courses</strong> or <strong>Round History</strong> to reveal a delete button. Watch is read-only for the course library — to remove a course, do it from the phone.</p>
+</div>
+
+<div class="faq">
+  <h3>The scorecard scan didn't capture the pars correctly. What can I do?</h3>
+  <p>Tap the back chevron on the result screen to re-launch the scanner. Try to hold the card flat, fill the frame, and avoid glare. If a particular cell stays wrong, tap it on the result screen to edit the value by hand before saving.</p>
+</div>
+
+<div class="faq">
+  <h3>Does ParTrack show GPS, course maps, or distances?</h3>
+  <p>No. ParTrack is intentionally focused on stroke counting and handicap tracking. GPS, distances, and course maps are common in other golf apps — ParTrack stays out of that space so the experience stays simple and the battery stays alive.</p>
+</div>
+
+<h2>Contact</h2>
+<div class="contact">
+  <p>Couldn't find what you were looking for? Email us.</p>
+  <p><a href="mailto:partrack.golf@outlook.com?subject=ParTrack%20Support">partrack.golf@outlook.com</a></p>
+</div>
+
+<footer>
+&copy; 2026 ParTrack &middot; <a href="https://partrackgolf.github.io/privacy.html">Privacy Policy</a>
+</footer>
+</body>
+</html>
