@@ -1,0 +1,15 @@
+{
+  "applinks": {
+    "details": [
+      {
+        "appIDs": ["JHX6KZ8B4V.com.partrack.partrack"],
+        "components": [
+          {
+            "/": "/t/*",
+            "comment": "Tournament invite links"
+          }
+        ]
+      }
+    ]
+  }
+}
