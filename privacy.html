@@ -11,6 +11,7 @@
     --fg: #1a1a1a;
     --muted: #666;
     --accent: #7acc00;
+    --card-bg: #f6f6f6;
   }
   @media (prefers-color-scheme: dark) {
     :root {
@@ -18,6 +19,7 @@
       --fg: #fff;
       --muted: #999;
       --accent: #aaff00;
+      --card-bg: #161616;
     }
   }
   body {
@@ -50,6 +52,13 @@
   }
   .accent { color: var(--accent); }
   a { color: var(--accent); }
+  .card {
+    background: var(--card-bg);
+    border-radius: 12px;
+    padding: 16px 18px;
+    margin: 14px 0;
+  }
+  .card h2 { margin-top: 4px; }
   footer {
     margin-top: 48px;
     padding-top: 16px;
@@ -61,38 +70,68 @@
 </head>
 <body>
 <h1>Privacy Policy</h1>
-<p class="effective">ParTrack &middot; Effective May 25, 2026</p>
+<p class="effective">ParTrack &middot; Effective June 6, 2026</p>
 
-<p>ParTrack is designed as a private, on-device tool. We do not collect, store, or transmit personal data. There are no accounts, no servers, no analytics, and no third-party tracking.</p>
+<p>ParTrack is a golf stroke counter designed around two scopes: a fully private on-device tool for your own play, and an opt-in Tournaments feature that uses Apple iCloud to keep a shared leaderboard in sync between players. We do not run our own servers, we do not include any analytics or advertising SDKs, and we do not share your data with any third party.</p>
 
-<h2>What the app handles</h2>
+<div class="card">
+  <h2>What stays on your device</h2>
+  <p>Everything you do outside of Tournaments stays local:</p>
+  <ul>
+    <li><strong>Saved courses</strong>, including any you scan or set up manually.</li>
+    <li><strong>Round history</strong> and your derived handicap index.</li>
+    <li><strong>Your display name and gender preference</strong>, captured at first launch. We use the gender preference to show the right scorecard row by default (men's vs ladies' pars and handicap indices).</li>
+    <li><strong>Favorites, settings, and the in-progress round</strong>.</li>
+  </ul>
+  <p>If you pair an Apple Watch, this same data is mirrored between your iPhone and Watch using Apple's <strong>WatchConnectivity</strong> framework. That sync is mediated by Apple and never passes through our servers.</p>
+</div>
+
+<div class="card">
+  <h2>What goes to Apple iCloud when you use Tournaments</h2>
+  <p>Tournaments use Apple's <strong>CloudKit public database</strong> so multiple players can share a single leaderboard. CloudKit is operated by Apple; we do not run our own backend. When you create or join a tournament, the following information is uploaded so other players in that same tournament can see it:</p>
+  <ul>
+    <li><strong>Display name</strong> &mdash; the name you chose at first launch, so other players can identify you.</li>
+    <li><strong>Tee selection</strong> &mdash; which tee you're playing.</li>
+    <li><strong>Handicap</strong> &mdash; only when the tournament's host has enabled handicap-adjusted scoring (Net Stroke Play or Net Match Play).</li>
+    <li><strong>Gender preference</strong> &mdash; uploaded so Net Match Play can place handicap strokes on the correct holes for every player. You'll see an information disclosure about this during onboarding.</li>
+    <li><strong>Per-hole stroke counts</strong> &mdash; written as you play, so the leaderboard updates in near-real time.</li>
+    <li><strong>Course definition</strong> &mdash; the par per hole and per-tee yardages of the course the host picked, embedded in the tournament so joiners can play without having the course in their own library.</li>
+    <li><strong>For team formats (Best Ball, Scramble, Alternate Shot):</strong> your team assignment and (for Scramble / Alternate Shot) which teammate the host designated as recorder.</li>
+    <li><strong>Apple iCloud user identifier</strong> &mdash; the anonymous CloudKit user record ID associated with your iCloud account is used to associate scores with the right player and to enforce that you can only edit your own. We do not store your email, Apple ID, or name from your Apple ID.</li>
+  </ul>
+  <p>Tournament data is visible to other participants who have joined the same tournament. It is not searchable by the public; you join by entering a 6&#8209;character code the host shares with you (or by tapping an invite link they send you).</p>
+</div>
+
+<div class="card">
+  <h2>What we don't do</h2>
+  <ul>
+    <li>We don't run our own servers or have our own backend.</li>
+    <li>We don't include analytics, advertising, or tracking SDKs.</li>
+    <li>We don't share your data with any third party.</li>
+    <li>We don't use your data for any form of advertising or cross-app tracking.</li>
+    <li>We don't ask for your Apple ID, email, phone number, contacts, location, photos library, or health data.</li>
+  </ul>
+</div>
+
+<h2>Scan Scorecard (camera)</h2>
+<p>When you tap "Scan with Camera" in the Scan Scorecard flow, ParTrack uses your iPhone's camera to capture an image of a paper scorecard and runs it through Apple's on-device <strong>Vision</strong> framework for text recognition. The captured image is processed entirely on your device. It is not uploaded anywhere, and it is discarded once parsing finishes. You can also pick a photo from your library instead of using the camera; the same on-device processing applies.</p>
+
+<h2>Push notifications (Tournaments)</h2>
+<p>If you join a tournament, ParTrack registers an Apple iCloud subscription so your device can be notified when another player submits a new score. These notifications are delivered by Apple. They contain no advertising content and are used only to refresh the leaderboard you're already viewing.</p>
+
+<h2>Your data control</h2>
 <ul>
-  <li><strong>Course information and round history</strong> are stored locally on your device.</li>
-  <li><strong>iPhone &harr; Apple Watch sync</strong> uses Apple's WatchConnectivity framework to mirror your courses, favorites, and rounds between your own devices. This sync is mediated by Apple and never passes through our servers.</li>
-  <li><strong>Scan Scorecard</strong> uses your iPhone's camera to capture an image of a paper scorecard. The image is processed entirely on your device using Apple's Vision framework for text recognition. The image is not uploaded anywhere and is discarded after parsing.</li>
+  <li><strong>Local data</strong> &mdash; uninstall the app from your iPhone (and your Apple Watch, if you use one) to remove everything that stays on device.</li>
+  <li><strong>Tournament data you created</strong> &mdash; if you're the host, you can close a tournament from Host Controls. Closed tournaments stop accepting score submissions; players can still see the final leaderboard until you delete the tournament record from your Apple iCloud.</li>
+  <li><strong>Tournament data you joined</strong> &mdash; ask the host to remove you, or delete your local copy by removing the tournament from your list. Your already-submitted scores will remain visible to the host and other participants while the tournament is open.</li>
+  <li><strong>Apple iCloud&hyphen;wide deletion</strong> &mdash; because all tournament data lives in your Apple iCloud account, you can remove ParTrack's data via <em>Settings → Apple ID → iCloud → Manage Account Storage → ParTrack</em>.</li>
 </ul>
-
-<h2>What we don't do</h2>
-<ul>
-  <li>We don't have user accounts or sign-ins.</li>
-  <li>We don't run servers or have a backend.</li>
-  <li>We don't include analytics, advertising, or tracking SDKs.</li>
-  <li>We don't share any data with third parties.</li>
-</ul>
-
-<h2>Permissions</h2>
-<ul>
-  <li><strong>Camera:</strong> requested only when you tap "Scan with Camera" in the Scan Scorecard flow. Used to capture an image of a paper scorecard for on-device text recognition.</li>
-</ul>
-
-<h2>Your data</h2>
-<p>All app data lives on your device (and your paired Apple Watch, if you use one). To delete it, uninstall the app from your device.</p>
 
 <h2>Children's privacy</h2>
-<p>This app is not directed at children under 13 and does not knowingly collect data from anyone.</p>
+<p>This app is not directed at children under 13 and does not knowingly collect data from anyone in that age group.</p>
 
 <h2>Changes to this policy</h2>
-<p>If this policy changes, the updated version will be posted at this URL with a revised effective date.</p>
+<p>If this policy changes, the updated version will be posted at this URL with a revised effective date. Material changes (new categories of data being uploaded, new third parties, etc.) will be noted in the app's About screen the next time you open it.</p>
 
 <h2>Contact</h2>
 <p>Questions about this policy? Email <a href="mailto:partrack.golf@outlook.com">partrack.golf@outlook.com</a>.</p>
