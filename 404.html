@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ParTrack</title>
+<style>
+  :root {
+    color-scheme: dark;
+    --bg: #000;
+    --fg: #fff;
+    --muted: #999;
+    --accent: #aaff00;
+    --card-bg: #161616;
+    --card-border: #232323;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--fg);
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Rounded", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    line-height: 1.5;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+  }
+  .wrap {
+    width: 100%;
+    max-width: 420px;
+    text-align: center;
+  }
+  .logo {
+    width: 88px;
+    height: 88px;
+    margin: 0 auto 20px;
+    background: var(--accent);
+    border-radius: 22px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 0 32px rgba(170, 255, 0, 0.35);
+    font-size: 44px;
+    font-weight: 900;
+    color: #000;
+    letter-spacing: -2px;
+  }
+  h1 {
+    font-size: 26px;
+    font-weight: 900;
+    margin: 0 0 8px;
+  }
+  p.sub {
+    color: var(--muted);
+    font-size: 15px;
+    margin: 0 0 28px;
+  }
+  .code-card {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 14px;
+    padding: 18px 20px;
+    margin: 0 0 24px;
+  }
+  .code-label {
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    color: var(--muted);
+    margin: 0 0 4px;
+  }
+  .code-value {
+    font-family: "SF Mono", ui-monospace, Menlo, monospace;
+    font-size: 32px;
+    font-weight: 900;
+    color: var(--accent);
+    letter-spacing: 4px;
+    margin: 0;
+  }
+  .steps {
+    text-align: left;
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 14px;
+    padding: 18px 22px 20px;
+    margin: 0 0 24px;
+  }
+  .steps h2 {
+    margin: 0 0 10px;
+    font-size: 14px;
+    font-weight: 800;
+    letter-spacing: 0.6px;
+    color: var(--accent);
+    text-transform: uppercase;
+  }
+  .steps ol {
+    margin: 0;
+    padding-left: 22px;
+    font-size: 14px;
+    color: var(--fg);
+  }
+  .steps li { margin: 5px 0; }
+  .cta {
+    display: inline-block;
+    background: var(--accent);
+    color: #000;
+    text-decoration: none;
+    font-weight: 800;
+    font-size: 15px;
+    padding: 14px 28px;
+    border-radius: 999px;
+    box-shadow: 0 0 24px rgba(170, 255, 0, 0.35);
+  }
+  .cta:active { transform: scale(0.97); }
+  .cta-secondary {
+    display: inline-block;
+    color: var(--muted);
+    text-decoration: none;
+    font-size: 13px;
+    padding: 10px;
+    margin-top: 12px;
+  }
+  .cta-secondary:hover { color: var(--fg); }
+  footer {
+    margin-top: 36px;
+    color: var(--muted);
+    font-size: 12px;
+  }
+  footer a { color: var(--muted); text-decoration: underline; }
+  /* 404-only fallback styling — hidden by default; the script
+     reveals it if the path doesn't match a tournament URL. */
+  .not-found { display: none; }
+  body.is-not-found .invite { display: none; }
+  body.is-not-found .not-found { display: block; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <!--
+    Invite landing — shown when /t/<CODE>/ is hit. JS below extracts
+    the code from location.pathname and stamps it into .code-value.
+    The card stays default-visible; the 404 fallback is hidden behind
+    the body.is-not-found class.
+  -->
+  <section class="invite">
+    <div class="logo" aria-hidden="true">P</div>
+    <h1>You're invited to a tournament</h1>
+    <p class="sub">A ParTrack player shared this invite with you.</p>
+
+    <div class="code-card">
+      <p class="code-label">JOIN CODE</p>
+      <p class="code-value" id="join-code">— — — — — —</p>
+    </div>
+
+    <div class="steps">
+      <h2>How to join</h2>
+      <ol>
+        <li>Install <strong>ParTrack</strong> from the App Store.</li>
+        <li>Open the app and finish quick setup.</li>
+        <li>Tap <strong>Tournaments</strong> &rarr; <strong>Join with Code</strong>.</li>
+        <li>Enter the code above.</li>
+      </ol>
+    </div>
+
+    <!--
+      App Store link is a placeholder until ParTrack ships. Update
+      this href once the App Store listing is live (the submission
+      step in todo #26 / app-privacy-answers.md).
+    -->
+    <a class="cta" href="https://apps.apple.com/app/partrack/" id="app-store-link">Get ParTrack</a>
+    <br>
+    <a class="cta-secondary" href="https://partrackgolf.github.io/">Learn more about ParTrack</a>
+  </section>
+
+  <!-- Generic 404 fallback when the URL doesn't carry a tournament code. -->
+  <section class="not-found">
+    <div class="logo" aria-hidden="true">P</div>
+    <h1>Page not found</h1>
+    <p class="sub">This link doesn't look like a ParTrack invite. Head back to <a href="https://partrackgolf.github.io/" style="color: var(--accent);">partrackgolf.github.io</a> to learn more.</p>
+  </section>
+
+  <footer>
+    &copy; 2026 ParTrack &middot;
+    <a href="https://partrackgolf.github.io/privacy.html">Privacy</a> &middot;
+    <a href="https://partrackgolf.github.io/support.html">Support</a>
+  </footer>
+</div>
+
+<script>
+  /*
+    URL shape we're parsing: /t/<CODE>/ or /t/<CODE>
+    The CODE charset comes from JoinCodeGenerator in the iOS app —
+    Crockford-ish (digits 2-9, uppercase A-Z minus visually
+    ambiguous chars) — but we accept any 4-12 char A-Z0-9 here so
+    a typo in case (lowercase) still resolves to a useful landing.
+    Anything outside that shape flips us to the 404 fallback.
+  */
+  (function () {
+    var path = window.location.pathname || '';
+    // Strip a trailing slash so "/t/ABC/" and "/t/ABC" both parse.
+    if (path.length > 1 && path.charAt(path.length - 1) === '/') {
+      path = path.slice(0, -1);
+    }
+    var m = path.match(/^\/t\/([A-Za-z0-9]{4,12})$/);
+    if (m) {
+      var code = m[1].toUpperCase();
+      var el = document.getElementById('join-code');
+      if (el) el.textContent = code;
+      // Title + share preview improvement: stamp the code into
+      // <title> so a returning user sees it in their browser history.
+      document.title = 'ParTrack Invite — ' + code;
+    } else {
+      document.body.classList.add('is-not-found');
+    }
+  })();
+</script>
+</body>
+</html>
